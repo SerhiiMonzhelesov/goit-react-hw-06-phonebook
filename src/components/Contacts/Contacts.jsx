@@ -2,7 +2,7 @@ import StyledContacts from './StyledContacts';
 import { ImBin } from 'react-icons/im';
 import PropTypes from 'prop-types';
 
-function Contacts({ contacts, onRemove }) {
+function Contacts({ contacts, removeContact }) {
   return (
     <StyledContacts>
       {contacts.map(({ name, number, id }) => {
@@ -10,7 +10,11 @@ function Contacts({ contacts, onRemove }) {
           <li key={id} className="item">
             <p className="text">{name}</p>
             <p>{number}</p>
-            <button type="button" onClick={() => onRemove(id)} className="btn">
+            <button
+              type="button"
+              onClick={() => removeContact(id)}
+              className="btn"
+            >
               <ImBin className="icon" />
             </button>
           </li>
@@ -30,5 +34,5 @@ Contacts.propTypes = {
       number: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  onRemove: PropTypes.func.isRequired,
+  removeContact: PropTypes.func.isRequired,
 };
